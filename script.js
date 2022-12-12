@@ -1,62 +1,58 @@
-let usuarioConEmail = "guada"
-let contrasenia = "1234"
+"use strict"
 
-const nombre = prompt("Ingrese su nombre")
-let correo = prompt("Ingrese su usuario")
-let contra = prompt("Ingrese su contraseña")
+// Descuento 10%
 
-function validarUsuario() {
-    if (usuarioConEmail !== correo && contra !== contrasenia){
-        alert("Su usuario y contraseña son erróneos")
-        return false
-    } else if (usuarioConEmail !== correo){
-        alert("Su usuario es erróneo")
-        return false
-    } else if (contra !== contrasenia){
-        alert("Su contraseña es incorrecta")
-        return false
-    } else {
-        return true
-    }
+let arr = [];
+const copia = arr.concat(productos);
+
+const descuento10 = () => {
+    copia.forEach(producto => {
+        if (producto.oferta === true){
+            producto.precio = producto.precio * 0.90
+        }
+    })
+    return copia
 }
 
-const saludar = () => alert(`Bienvenido ${nombre}`)
+console.log(descuento10());
 
-function validarCorreo(correo) {
-    for (let i = 0; i < correo.length; i++) {
-        if (correo[i] === "@"){
-            return true
-        } 
-        return false
-    }
+// Ordenar productos
+
+const ordenarAlfabeticamente = () => {
+    copia.sort((a,b) => {
+        if (a.nombre < b.nombre) return -1
+        if (a.nombre > b.nombre) return 1
+        return 0
+    })
+    return copia
 }
 
-const nums = /[0-9]/
+console.log(ordenarAlfabeticamente())
 
-function validarContrasenia(contra) {
+// Filtro de ofertas
 
-    let contieneNums;
-    for (letra in contra){
-        if (contra[letra].match(nums)){
-            contieneNums = true
+const filtrarOfertas = () => {
+    const ofertas = productos.filter(producto => (producto.oferta === true))
+    return ofertas;
+}
+
+const verOfertas = () => {
+    if (confirm("¿Desea ver las ofertas?")) { console.table(filtrarOfertas()) }
+}
+
+verOfertas()
+
+//buscar productos
+
+const buscarProducto = () => {
+    const productoABuscar = prompt("Ingrese un producto")
+    let productosEncontrados = []
+    for (const producto of productos) {
+        if ((producto.nombre).includes(productoABuscar)){
+            productosEncontrados.push(producto)
         }
     }
-    
-    if (contra.length > 8 && contieneNums){
-        return true
-    } else {
-        return false
-    }
+    return productosEncontrados
 }
 
-if (validarUsuario()){
-    saludar()
-}
-
-if (!validarCorreo(correo)){
-    usuarioConEmail = prompt("Su correo es inválido, ingrese uno nuevo")
-}
-
-if (!validarContrasenia(contrasenia)){
-    contrasenia = prompt("Su contraseña debe contener al menos 8 caracteres y un número. Ingrese una nueva contraseña.")
-}
+console.table(buscarProducto());
