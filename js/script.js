@@ -1,9 +1,33 @@
 "use strict"
 
-// Descuento 10%
-
+const main = document.querySelector("main")
 let arr = [];
 const copia = arr.concat(productos);
+
+mostrarProductos(productos, main);
+const botones = document.querySelectorAll(".btn")
+
+if (localStorage.darkmode === "true") {
+    ModoOscuro()
+} 
+
+const agregarAlCarrito = () => {
+    for (let boton of botones) {
+        boton.addEventListener("click", (e)=>{
+            productos.forEach( producto =>{
+                if (producto.id === parseInt(boton.id)){
+                    carrito.push(producto)
+                    localStorage.setItem("carrito", JSON.stringify(carrito))
+                }
+            })
+        })
+    }
+}
+
+agregarAlCarrito()
+
+
+// Descuento 10%
 
 const descuento10 = () => {
     copia.forEach(producto => {
@@ -14,7 +38,7 @@ const descuento10 = () => {
     return copia
 }
 
-console.log(descuento10());
+// console.log(descuento10());
 
 // Ordenar productos
 
@@ -27,7 +51,7 @@ const ordenarAlfabeticamente = () => {
     return copia
 }
 
-console.log(ordenarAlfabeticamente())
+// console.log(ordenarAlfabeticamente())
 
 // Filtro de ofertas
 
@@ -40,7 +64,7 @@ const verOfertas = () => {
     if (confirm("¿Desea ver las ofertas?")) { console.table(filtrarOfertas()) }
 }
 
-verOfertas()
+// verOfertas()
 
 //buscar productos
 
@@ -55,4 +79,4 @@ const buscarProducto = () => {
     return productosEncontrados
 }
 
-console.table(buscarProducto());
+// console.table(buscarProducto());

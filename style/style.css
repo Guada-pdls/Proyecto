@@ -1,0 +1,44 @@
+header, nav{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+footer{
+    background-color: #fff;
+}
+.card{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 18rem;
+    max-height: 400px;
+    overflow: hidden;
+}
+.dark-card{
+    background-color: #5a5a5a;
+}
+.descrip{
+    text-overflow: ellipsis
+}
+.texto{
+    overflow: hidden;
+    max-height: 160px;
+}
+.boton{
+    margin-top: 10px;
+}
+img{
+    max-height: 110px;
+    max-width: fit-content;
+}
+svg{
+    max-width: 30px;
+}
+li{
+    list-style-type: none;
+}
+.icon{
+    max-width: 30px;
+}
+
+/* Modo oscuro */
+.modo-oscuro{
+    background-color: #222222;
+    color: white;
+}
