@@ -1,27 +1,32 @@
 const main = document.querySelector("main")
 Carrito()
 
-const botones = document.querySelectorAll(".btn")
+let botones = document.querySelectorAll(".btn");
 
-if (localStorage.darkmode === "true") {
-    ModoOscuro()
-} 
+(localStorage.getItem("darkmode") === "true") ? activarModoOscuro() : desactivarModoOscuro()
 
-botones.forEach( boton => {
-    boton.addEventListener("click", (e)=>{
-        for (let producto of carrito) {
-            if (producto.id === parseInt(boton.id)){
-                carrito = carrito.filter(producto => producto.id !== parseInt(boton.id))
-                if (main.hasChildNodes()){
-                    while (main.childNodes.length >= 1){
-                        main.removeChild(main.firstChild)
-                    }
+function eliminarProductos(boton) {
+    for (let producto of carrito) {
+        if (producto.id === parseInt(boton.id)){
+            const indice = carrito.findIndex(elemnt => elemnt.id === producto.id)
+            eliminarDelCarrito(indice)
+            if (main.hasChildNodes()){
+                while (main.childNodes.length >= 1){
+                    main.removeChild(main.firstChild)
                 }
-                Carrito()
-                if (localStorage.darkmode === "true") {
-                    ModoOscuro()
-                } 
             }
+            Carrito();
+            (localStorage.getItem("darkmode") === "true") ? activarModoOscuro() : desactivarModoOscuro()
         }
-    })
-})
+    }
+}
+
+const botonesCarrito = () => {
+    for (let boton of botones) {
+        boton.addEventListener("click", (e)=>{
+            eliminarProductos(boton)
+        })
+    }
+}
+
+botonesCarrito()

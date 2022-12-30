@@ -5,26 +5,23 @@ let arr = [];
 const copia = arr.concat(productos);
 
 mostrarProductos(productos, main);
-const botones = document.querySelectorAll(".btn")
+const botones = document.querySelectorAll(".btn");
 
-if (localStorage.darkmode === "true") {
-    ModoOscuro()
-} 
+(localStorage.getItem("darkmode") === "true") ? activarModoOscuro() : desactivarModoOscuro()
 
-const agregarAlCarrito = () => {
+const botonesProductos = () => {
     for (let boton of botones) {
         boton.addEventListener("click", (e)=>{
             productos.forEach( producto =>{
                 if (producto.id === parseInt(boton.id)){
-                    carrito.push(producto)
-                    localStorage.setItem("carrito", JSON.stringify(carrito))
+                    agregarAlCarrito(producto)
                 }
             })
         })
     }
 }
 
-agregarAlCarrito()
+botonesProductos()
 
 
 

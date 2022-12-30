@@ -158,3 +158,13 @@ const Carrito = () => {
         main.appendChild(cardCarrito)
     }
 }
+
+const agregarAlCarrito = producto => {
+    carrito.push(producto)
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+}
+
+const eliminarDelCarrito = indiceProducto => {
+    carrito.splice(indiceProducto, 1)
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+}
