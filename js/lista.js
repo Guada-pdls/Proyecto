@@ -168,3 +168,34 @@ const eliminarDelCarrito = indiceProducto => {
     carrito.splice(indiceProducto, 1)
     localStorage.setItem("carrito", JSON.stringify(carrito))
 }
+
+const validarForm = (nam, last, mail, msg)=>{
+    let error = [];
+    if (nam.value.length < 4){
+        error[0] = true;
+        error[1] = "El nombre no puede contener menos de 4 caracteres"
+        return error;
+    } else if (nam.value.length > 40 || last.value.length > 40){
+        error[0] = true;
+        error[1] = "El nombre no puede contener mas de 40 caracteres"
+        return error
+    } else if (last.value.length < 3){
+        error[0] = true;
+        error[1] = "El apellido no puede contener menos de 3 caracteres"
+        return error
+    } else if (last.value.length > 40){
+        error[0] = true;
+        error[1] = "El apellido no puede contener mas de 40 caracteres"
+        return error
+    } else if (mail.value.length < 5 || mail.value.length > 40 || mail.value.indexOf("@") == -1 || mail.value.indexOf(".") == -1){
+        error[0] = true;
+        error[1] = "El correo es inválido"
+        return error;
+    } else if (msg.value.length < 4){
+        error[0] = true;
+        error[1] = "El mensaje no puede contener menos de 4 caracteres"
+        return error;
+    }
+    error[0] = false;
+    return error;
+};

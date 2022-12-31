@@ -1,17 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 header, nav{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 footer{
     background-color: #fff;
 }
+.logo{
+    transition: 0.5s
+}
+.logo:hover{
+    transform: scale(1.1);
+}
 .card{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     width: 18rem;
     max-height: 400px;
     overflow: hidden;
-}
-.dark-card{
-    background-color: #5a5a5a;
 }
 .descrip{
     text-overflow: ellipsis
@@ -36,9 +44,52 @@ li{
 .icon{
     max-width: 30px;
 }
+/* Formulario */
+form{
+    margin: 20px 30vw;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.tittle{
+    text-align: center;
+    padding-bottom: 1rem;
+}
+.red{
+    color: #9f3939;
+}
+.iconos img{
+    height: 50px;
+    transition: 0.5s;
+}
+.iconos img:hover{
+    transform: scale(1.1);
+}
 
 /* Modo oscuro */
 .modo-oscuro{
     background-color: #222222;
     color: white;
+}
+.dark-card{
+    background-color: #5a5a5a;
+}
+
+/* Media querie s */
+@media screen and (max-width: 768px){
+    form{
+        margin: 20px 15vw;
+    }
+}
+
+/* Media querie xs */
+@media screen and (max-width: 576px){
+    .form{
+        margin: 15px 8vw;
+        padding: 1rem !important;
+    }
+    .tittle{
+        font-size: 1.2rem
+    }
+    input{
+        font-size: 0.9rem !important;
+    }
 }
