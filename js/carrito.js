@@ -9,13 +9,15 @@ function eliminarProductos(boton) {
     for (let producto of carrito) {
         if (producto.id === parseInt(boton.id)){
             const indice = carrito.findIndex(elemnt => elemnt.id === producto.id)
-            eliminarDelCarrito(indice)
+            eliminarDelCarrito(indice)            
             if (main.hasChildNodes()){
                 while (main.childNodes.length >= 1){
                     main.removeChild(main.firstChild)
                 }
             }
             Carrito();
+            botones = document.querySelectorAll(".btn");
+            botonesCarrito();
             (localStorage.getItem("darkmode") === "true") ? activarModoOscuro() : desactivarModoOscuro()
         }
     }
